@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.tp4.model.Cliente;
 import ar.edu.unju.fi.tp4.model.Compra;
 import ar.edu.unju.fi.tp4.service.IClienteService;
+import ar.edu.unju.fi.tp4.service.ICompraService;
 import ar.edu.unju.fi.tp4.model.Producto;
 import ar.edu.unju.fi.tp4.service.IProductoService;
 
@@ -34,7 +35,7 @@ public class IndexController {
 	 private IClienteService clienteService;
 	 
 	 @Autowired
-	 //private ICompraService compraService;
+	 private ICompraService compraService;
 	
 	/**
 	 * Metodo que muestra la pagina de forma static
@@ -96,6 +97,8 @@ public class IndexController {
 		model.addObject("clientes",clienteService.obtenerCliente());
 		return model;
    	}
+	 
+	//Index del tp5 Compras
 	
 	@GetMapping("/index/compra")
 	public String getFormCompra(Model model) {
@@ -110,6 +113,18 @@ public class IndexController {
 		//model.addObject("compra",clienteCompra.obtenerCompra());
 		return model;
 	}
+	@GetMapping("/index/listadoCompra")
+	 public ModelAndView getCompraListado() {
+		 ModelAndView model = new ModelAndView("mostrarclientes");
+		
+		if(compraService.obtenerCompras() == null) {
+			 compraService.generarListaCompras();
+		}
+		
+		model.addObject("compras",compraService.obtenerCompras());
+		return model;
+  	}
+	
 	 
 	 
 	 
