@@ -4,6 +4,7 @@ import java.util.List;
 
 import ar.edu.unju.fi.tp4.model.Compra;
 import ar.edu.unju.fi.tp4.service.ICompraService;
+import ar.edu.unju.fi.tp4.util.TablaCompra;
 
 public class CompraServiceImp implements ICompraService{
     
@@ -11,7 +12,7 @@ public class CompraServiceImp implements ICompraService{
 	
 	@Override
 	public void generarListaCompras() {
-		// TODO Auto-generated method stub
+		compraList=TablaCompra.registros;
 		
 	}
 
