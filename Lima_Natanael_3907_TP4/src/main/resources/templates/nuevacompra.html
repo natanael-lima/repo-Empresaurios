@@ -27,9 +27,13 @@
 						    <label for="inputCod4" class="form-label">Ingrese ID</label>
 						    <input type="number"  th:field="*{id}" placeholder="Documento..." class="form-control" id="inputEmail4">
 						  </div>
-						  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+						  <!--  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
 						    <label for="inputNombre4" class="form-label">Ingrese Producto</label>
 						    <input type="text"  th:field="*{producto}" class="form-control" id="inputAddress" placeholder="Rueda" >
+						  </div>-->
+						  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+						    <label for="mail" class="form-label">Ultimo Producto</label>
+						    <p><span th:text="${producto.getNombre}"></span><span th:text="${text}"></span></p>
 						  </div>
 						  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
 						    <label for="mail" class="form-label">Ingrese Cantidad</label>

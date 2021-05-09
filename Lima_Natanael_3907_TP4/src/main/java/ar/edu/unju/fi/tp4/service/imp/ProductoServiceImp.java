@@ -28,6 +28,9 @@ public class ProductoServiceImp implements IProductoService {
 		LOGGER.info("Resultado Producto: "+producto);
 		productoList.add(producto);
 	}
+	public List<Producto> obtenerListaProducto(){
+		return productoList;
+	}
 	
 	/**
      * Metodo de obtener el producto de la lista
@@ -37,5 +40,12 @@ public class ProductoServiceImp implements IProductoService {
 		Producto prod = productoList.get(count-1);
 		return prod;
 	}
+     @Override
+ 	public Producto mostrarUltimoProducto() {
+
+ 		return productoList.get(productoList.size()-1);
+ 		
+ 	}
+     
 
 }

@@ -37,6 +37,7 @@ public class IndexController {
 	 @Autowired
 	 @Qualifier("tableCompra")
 	 private ICompraService compraService;
+	 
 	
 	/**
 	 * Metodo que muestra la pagina de forma static
@@ -103,13 +104,21 @@ public class IndexController {
 	
 	@GetMapping("/index/compra")
 	public String getFormCompra(Model model) {
+		String text="";
 		model.addAttribute(compra);
+		model.addAttribute("producto",productoService.mostrarUltimoProducto());
+		if(productoService.obtenerListaProducto().size()==1) {
+		   text="No ingreso un producto";
+		   model.addAttribute("text",text);
+		}
+		
 		return "nuevacompra";
 	}
 	 
 	@PostMapping("/index/guardarCompra")
 	public ModelAndView getGuardarCompra(@ModelAttribute("compra") Compra compra) {
 		ModelAndView model = new ModelAndView("index");
+		compra.setProducto(productoService.mostrarUltimoProducto());
 		compraService.agregarCompra(compra);
 		//model.addObject("compras",compraService.obtenerCompras());
 		return model;
