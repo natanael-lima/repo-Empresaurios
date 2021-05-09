@@ -10,7 +10,7 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="/css/style.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>TP5</title>
+    <title>TP4</title>
 </head>
 <body>
 	     
@@ -21,18 +21,19 @@
 		 <table class="tab2 table table-bordered table-dark ">
 				  <thead >
 				    <tr>
-				       <th scope="col">ID </th>
+				       <th scope="col">ID</th>
 		               <th scope="col">Producto</th>
 		               <th scope="col">Cantidad</th>
 		               <th scope="col">Total</th>
+		   
+				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr  th:each="cli : ${clientes}">
-				      <td th:text="${cli.tipoDocumento}"></td>
-		              <td th:text="${cli.nroDocumento}"></td>
-		              <td th:text="${cli.nombreApellido}"></td>
-		              <td th:text="${cli.mail}"></td>
-				    </tr>
+				    <tr  th:each="c : ${compras}">
+				      <td th:text="${c.id}"></td>
+		              <td th:text="${c.producto}"></td>
+		              <td th:text="${c.cantidad}"></td>
+		              <td th:text="${c.total}"></td>
 				  
 				  </tbody>
 				</table>
