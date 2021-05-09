@@ -4,6 +4,7 @@ import java.util.List;
 
 import ar.edu.unju.fi.tp4.model.Compra;
 
+
 public interface ICompraService {
 	
 	

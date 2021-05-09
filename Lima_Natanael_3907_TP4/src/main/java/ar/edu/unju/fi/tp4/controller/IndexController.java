@@ -35,6 +35,7 @@ public class IndexController {
 	 private IClienteService clienteService;
 	 
 	 @Autowired
+	 @Qualifier("tableCompra")
 	 private ICompraService compraService;
 	
 	/**
@@ -83,7 +84,7 @@ public class IndexController {
 		ModelAndView model = new ModelAndView("index");
 		clienteService.agregarCliente(cliente);
 		model.addObject("clientes",clienteService.obtenerCliente());
-   	return model;
+		return model;
 	}
 	
 	 @GetMapping("/index/listado")
@@ -103,19 +104,20 @@ public class IndexController {
 	@GetMapping("/index/compra")
 	public String getFormCompra(Model model) {
 		model.addAttribute(compra);
-		return "nuevocliente";
+		return "nuevacompra";
 	}
 	 
 	@PostMapping("/index/guardarCompra")
 	public ModelAndView getGuardarCompra(@ModelAttribute("compra") Compra compra) {
 		ModelAndView model = new ModelAndView("index");
-		//compraService.agregarCompra(compra);
-		//model.addObject("compra",clienteCompra.obtenerCompra());
+		compraService.agregarCompra(compra);
+		//model.addObject("compras",compraService.obtenerCompras());
 		return model;
 	}
+	
 	@GetMapping("/index/listadoCompra")
 	 public ModelAndView getCompraListado() {
-		 ModelAndView model = new ModelAndView("mostrarclientes");
+		 ModelAndView model = new ModelAndView("mostrarcompra");
 		
 		if(compraService.obtenerCompras() == null) {
 			 compraService.generarListaCompras();
